@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter an integer: ");
+        String num = s.next();
+        String ans = "";
+
+        for(int k = 0; k<20; k++) {
+            int i = 0;
+            while (i < num.length()) {
+                int counter = 1;
+                if ((i < num.length() - 1) && (num.substring(i, i+1).equals(num.substring(i + 1, i + 2)))) {
+                    int j = i + 1;
+                    while (j < num.length()) {
+                        if (num.substring(i, i + 1).equals(num.substring(j, j + 1))) {
+
+                            counter++;
+
+                        }
+                        else{
+                            j = num.length();
+                        }
+                        j++;
+                    }
+                }
+                ans += "" + counter + num.substring(i, i + 1);
+
+                i = i + counter;
+            }
+            System.out.println(ans);
+            num = ans;
+            ans = "";
+
+        }
+
+    }
+}
